@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../SimulacionCorregidaDocumentada"
+		},
+		{
+			"path": "../../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "D3Lab-main"
+	}
+}

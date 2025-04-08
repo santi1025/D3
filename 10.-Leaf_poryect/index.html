@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Leaf Project - Visualización de datos">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leaf Project</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Custom styling -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #f5f5f5;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .navbar {
+            background-color: #2b2b2b;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .navbar-brand img {
+            max-height: 50px;
+        }
+
+        #chart-area {
+            padding: 40px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img id="logo" src="img/logo.png" alt="Leaf Project Logo">
+            </a>      
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div id="chart-area">
+                    <!-- D3 chart will render here -->
+                </div>  
+            </div>
+        </div>
+    </main>
+
+    <!-- External JS libraries -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>

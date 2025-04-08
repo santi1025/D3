@@ -1,11 +1,9 @@
 d3.json("data/buildings.json").then((data) => {
     data.forEach((d) => {
         d.name = d.name;
-        d.height = d.height;
+        d.height = +d.height; // Asegura que sea número
     });
 
-    console.log(data);
-    
     var margin = {top: 10, right: 10, bottom: 100, left: 100};
     var width = 600;
     var height = 400;
@@ -28,10 +26,6 @@ d3.json("data/buildings.json").then((data) => {
         .domain([0, d3.max(data, d => d.height)])
         .range([height, 0]);
     
-    const color = d3.scaleOrdinal()
-        .domain(data.map(d => d.name))
-        .range(d3.schemeSet3);
-    
     var rect = g.selectAll("rect")
         .data(data);
     
@@ -41,7 +35,7 @@ d3.json("data/buildings.json").then((data) => {
         .attr("y", d => y(d.height))  
         .attr("width", x.bandwidth())
         .attr("height", d => height - y(d.height))  
-        .attr("fill", "grey");  
+        .attr("fill", "#003f87");  
     
     var xAxis = d3.axisBottom(x);
     g.append("g")
@@ -60,8 +54,8 @@ d3.json("data/buildings.json").then((data) => {
         .call(yAxis);
     
     g.append("text")
-        .attr("x", width / 2)
-        .attr("y", height + 60)
+        .attr("x", width / 3)
+        .attr("y", height + 95)
         .attr("text-anchor", "middle")
         .text("The world's tallest buildings");
     
@@ -71,7 +65,7 @@ d3.json("data/buildings.json").then((data) => {
         .attr("y", -60)
         .attr("text-anchor", "middle")
         .text("Height (m)");
-    
+
 }).catch((error) => {
     console.log(error);
 });

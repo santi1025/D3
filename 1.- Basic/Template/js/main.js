@@ -1,12 +1,12 @@
 var svg = d3.select("#chart-area").append("svg")
-	.attr("width", 400)
+	.attr("width", 500)
 	.attr("height", 400);
 
 var circle = svg.append("circle")
-	.attr("cx", 100)
-	.attr("cy", 250)
+	.attr("cx", 400)
+	.attr("cy", 260)
 	.attr("r", 70)
-	.attr("fill", "blue");
+	.attr("fill", "green");
 
 var rect = svg.append("rect")
 	.attr("x", 20)

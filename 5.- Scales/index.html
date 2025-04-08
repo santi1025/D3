@@ -1,28 +1,40 @@
 <!doctype html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
-    <title>Template</title>
+    <meta name="description" content="Visualización con D3.js">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gráfico D3.js</title>
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Custom styling -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <h1>d3 is great!</h1>
-    <!-- Bootstrap grid setup -->
-    <div class="container">
-        <div class="row">
-            <div id="chart-area"></div>
-        </div>
-    </div>
+<body class="bg-light d-flex flex-column min-vh-100">
 
-<!-- External JS libraries -->
-<script src="js/d3.min.js"></script>
-<!-- Custom JS -->
-<script src="js/main.js"></script>
+    <!-- Encabezado -->
+    <header class="bg-dark text-white text-center py-4 shadow-sm">
+        <h1 class="h3 mb-1">Scales</h1>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="flex-grow-1">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div id="chart-area" class="bg-white p-4 rounded shadow-sm w-100" style="max-width: 600px;">
+                    <!-- Aquí D3 insertará el gráfico -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- External JS libraries -->
+    <script src="js/d3.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
 
 </body>
 </html>

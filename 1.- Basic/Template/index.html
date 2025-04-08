@@ -1,28 +1,39 @@
 <!doctype html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
-    <title>Template</title>
-    <!-- Bootstrap -->
+    <meta name="description" content="Página con visualización D3.js">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Basic</title>
+
+    <!-- Bootstrap -->  
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Custom styling -->
+    <!-- Estilo personalizado -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1>d3 is great!</h1>
-    <!-- Bootstrap grid setup -->
-    <div class="container">
-        <div class="row">
-            <div id="chart-area"></div>
+    <!-- Encabezado llamativo -->
+    <header class="bg-dark text-white text-center py-4">
+        <h1 class="display-4">Basic</h1>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container my-5">
+        <div class="row justify-content-center">
+            <div id="chart-area" class="col-12 col-md-10 col-lg-8">
+                <!-- Aquí se renderiza el gráfico con D3 -->
+            </div>
         </div>
-    </div>
+    </main>
 
-<!-- External JS libraries -->
-<script src="js/d3.min.js"></script>
-<!-- Custom JS -->
-<script src="js/main.js"></script>
+    <!-- Pie de página -->
+    <footer class="bg-light text-center text-muted py-3">
+    </footer>
 
+    <!-- Librerías JS externas -->
+    <script src="js/d3.min.js"></script>
+    <!-- Script personalizado -->
+    <script src="js/main.js"></script>
 </body>
 </html>

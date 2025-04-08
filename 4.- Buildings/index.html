@@ -1,28 +1,38 @@
 <!doctype html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="description" content="">
-    <title>Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buildings</title>
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Custom styling -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <h1>d3 is great!</h1>
+<body class="bg-light">
+
+    <!-- Encabezado -->
+    <header class="bg-primary text-white text-center py-4 mb-4 shadow-sm">
+        <h1 class="h3 mb-1">Buildings</h1>
+    </header>
+
     <!-- Bootstrap grid setup -->
     <div class="container">
-        <div class="row">
-            <div id="chart-area"></div>
+        <div class="row justify-content-center">
+            <div id="chart-area" class="bg-white p-4 rounded shadow-sm">
+            </div>
         </div>
     </div>
 
-<!-- External JS libraries -->
-<script src="js/d3.min.js"></script>
-<!-- Custom JS -->
-<script src="js/main.js"></script>
+  
+
+    <!-- External JS libraries -->
+    <script src="js/d3.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
 
 </body>
 </html>
