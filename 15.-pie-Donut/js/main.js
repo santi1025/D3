@@ -1,148 +1,127 @@
-/*
+// Configuración general
+const margin = { top: 20, right: 300, bottom: 30, left: 50 };
+const width = 800 - margin.left - margin.right;
+const height = 400 - margin.top - margin.bottom;
+const radius = Math.min(width, height) / 2;
 
-    Adapted from Mike Bostock at bl.ocks.org
-    https://bl.ocks.org/mbostock/5682158
-
-*/
-
-var margin ={top: 20, right: 300, bottom: 30, left: 50},
-    width = 800 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom,
-    radius = Math.min(width, height) / 2;
-
-var svg = d3.select("#chart-area").append("svg")
-	.attr("width", width + margin.left + margin.right)
+// SVG y grupo principal
+const svg = d3.select("#chart-area").append("svg")
+    .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
-var g = svg.append("g")
-    .attr("transform", 
-    	"translate(" + width / 2 + "," + height / 2 + ")");
 
-var color = d3.scaleOrdinal(d3.schemeCategory10);
+const g = svg.append("g")
+    .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
-// TODO: create the arc generator for a donut chart.
-var arc = d3.arc()
-    .innerRadius(radius * 0.4) // This makes it a donut chart (not 0)
+// Escala de color
+const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+// Generador de arco (donut)
+const arc = d3.arc()
+    .innerRadius(radius * 0.4)
     .outerRadius(radius * 0.8);
 
-// TODO: create the pie layout generator.
-var pie = d3.pie()
+// Generador de layout tipo pie
+const pie = d3.pie()
     .value(d => d.count)
-    .sort(null); // Don't sort, use the original order
+    .sort(null);
 
-d3.tsv("data/donut2.tsv").then((data) => {
-    // TODO: Transform data to its proper format
-    // count -> number
-    // fruit -> lower case
+// Carga y transformación de datos
+d3.tsv("data/donut2.tsv").then(data => {
     data.forEach(d => {
         d.count = +d.count;
         d.fruit = d.fruit.toLowerCase();
     });
 
-    console.log(data);
-    
-    // TODO: create the nest function to group by fruits
-    var regionsByFruit = d3.nest()
+    const regionsByFruit = d3.nest()
         .key(d => d.fruit)
         .entries(data);
 
-    console.log(regionsByFruit)
-
-    var label = d3.select("form").selectAll("label")
+    // Crear radio buttons por fruta
+    const label = d3.select("form").selectAll("label")
         .data(regionsByFruit)
         .enter().append("label");
 
-    // Dynamically add radio buttons to select the fruit
     label.append("input")
-        	.attr("type", "radio")
-        	.attr("name", "fruit")
-        	.attr("value", (d) => { return d.key; })
-        	.on("change", update)
-        .filter((d, i) => { return !i; })
-        	.each(update)
-        	.property("checked", true);
+        .attr("type", "radio")
+        .attr("name", "fruit")
+        .attr("value", d => d.key)
+        .on("change", update)
+        .filter((d, i) => i === 0)
+        .each(update)
+        .property("checked", true);
 
     label.append("span")
-        .attr("fill", "red")
-        .text((d) => { return d.key; });
+        .text(d => d.key);
 
-}).catch((error) => {
-    console.log(error);
+}).catch(error => {
+    console.error("Error al cargar datos:", error);
 });
 
+// Función de actualización (interacción)
 function update(region) {
-    var path = g.selectAll("path");
+    let path = g.selectAll("path");
 
-    var data0 = path.data(),
-        data1 = pie(region.values);
+    const data0 = path.data();
+    const data1 = pie(region.values);
 
-    // JOIN elements with new data.
+    // JOIN
     path = path.data(data1, key);
 
-    // EXIT old elements from the screen.
+    // EXIT
     path.exit()
-        .datum((d, i) => { 
-        	return findNeighborArc(i, data1, data0, key) || d; 
-        })
+        .datum((d, i) => findNeighborArc(i, data1, data0, key) || d)
         .transition()
         .duration(750)
         .attrTween("d", arcTween)
         .remove();
-    
-    // UPDATE elements still on the screen.
+
+    // UPDATE
     path.transition()
         .duration(750)
         .attrTween("d", arcTween);
 
-    // ENTER new elements in the array.
-    path.enter()
-        .append("path")
-        .each(function(d, i) { 
-        	this._current = 
-        		findNeighborArc(i, data0, data1, key) || d; 
-        }) 
-        .attr("fill", (d) => {  
-        	return color(d.data.region) 
+    // ENTER
+    path.enter().append("path")
+        .each((d, i) => {
+            this._current = findNeighborArc(i, data0, data1, key) || d;
         })
+        .attr("fill", d => color(d.data.region))
         .transition()
         .duration(750)
-            .attrTween("d", arcTween);
+        .attrTween("d", arcTween);
 }
 
+// Función clave para identificar regiones
 function key(d) {
     return d.data.region;
 }
 
+// Ayudantes para interpolaciones suaves (transiciones)
 function findNeighborArc(i, data0, data1, key) {
-    var d;
-    return (d = findPreceding(i, data0, data1, key)) ? {startAngle: d.endAngle, endAngle: d.endAngle}
-        : (d = findFollowing(i, data0, data1, key)) ? {startAngle: d.startAngle, endAngle: d.startAngle}
-        : null;
+    return findPreceding(i, data0, data1, key) 
+        || findFollowing(i, data0, data1, key) 
+        || null;
 }
 
-// Find the element in data0 that joins the highest preceding element in data1.
 function findPreceding(i, data0, data1, key) {
-    var m = data0.length;
     while (--i >= 0) {
-        var k = key(data1[i]);
-        for (var j = 0; j < m; ++j) {
-            if (key(data0[j]) === k) return data0[j];
-        }
+        const k = key(data1[i]);
+        const match = data0.find(d => key(d) === k);
+        if (match) return match;
     }
 }
 
-// Find the element in data0 that joins the lowest following element in data1.
 function findFollowing(i, data0, data1, key) {
-    var n = data1.length, m = data0.length;
-    while (++i < n) {
-        var k = key(data1[i]);
-        for (var j = 0; j < m; ++j) {
-            if (key(data0[j]) === k) return data0[j];
-        }
+    while (++i < data1.length) {
+        const k = key(data1[i]);
+        const match = data0.find(d => key(d) === k);
+        if (match) return match;
     }
 }
 
+// Interpolador de arco
 function arcTween(d) {
-    var i = d3.interpolate(this._current, d);
-    this._current = i(1)
-    return (t) => { return arc(i(t)); };
+    const i = d3.interpolate(this._current, d);
+    this._current = i(1);
+    return t => arc(i(t));
 }

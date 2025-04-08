@@ -1,41 +1,75 @@
-<!-- 
-
-  Adapted from Mike Bostock at bl.ocks.org
-  https://bl.ocks.org/mbostock/3883195
-
- -->
-
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
-    <title>Area charts</title>
+    <meta name="description" content="Area Charts - D3 Example">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Area Charts</title>
+
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            background-color: #dadada;
+            color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #272727;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        #chart-area {
+            padding: 60px 20px;
+            background-color: #989898;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+            margin-top: 40px;
+        }
+    </style>
 </head>
+
 <body>
 
-   <nav class="navbar navbar-default">
-        <div class="container">
-           
-        </div>
-    </nav>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <h1 style="color: #f9f9f9; font-size: 24px; margin: 0;">Area Charts</h1>
+            </div>
+        </nav>
+    </header>
 
-    <!-- Bootstrap grid setup -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="chart-area"></div>                  
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="chart-area">
+                        <!-- D3 will render chart here -->
+                    </div>                  
+                </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    
 
     <!-- External JS libraries -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/d3.min.js"></script>
-    <!-- Custom JS -->
     <script src="js/main.js"></script>
 
 </body>
+</html>

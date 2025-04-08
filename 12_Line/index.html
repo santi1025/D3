@@ -1,51 +1,84 @@
 <!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <title>Line graph</title>
-        <!-- Bootstrap Core CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <!-- jQuery UI CSS -->
-        <link rel="stylesheet" href="css/jquery-ui.min.css">
-        <link rel="stylesheet" href="css/jquery-ui.structure.min.css">
-        <link rel="stylesheet" href="css/jquery-ui.theme.min.css">
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="css/style.css">
-    </head>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Interactive Line Graph">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Line Graph</title>
 
-    <body>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.theme.min.css">
+    <!-- Custom -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #f1f1f1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #f6f6f6;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+
+        .navbar-brand img {
+            max-height: 50px;
+        }
+
+        #chart-area {
+            background-color: #ececec;
+            padding: 60px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+            min-height: 400px;
+        }
+
+        .ui-slider {
+            background-color: #444;
+            border: none;
+        }
+
+        .ui-slider-handle {
+            background-color: #f1c40f;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
         <nav class="navbar navbar-default">
             <div class="container">
-                <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png"></a>      
+                <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png" alt="Logo"></a>
             </div>
         </nav>
+    </header>
 
-        <!-- Bootstrap grid setup -->
-        <div class="container">
+    <main>
+        <div class="container mt-4">
             <div class="row">
                 <div class="col-md-12">
-                    <div id="chart-area"></div>                  
+                    <div id="chart-area">
+                        <!-- Line chart goes here -->
+                    </div>                  
                 </div>
             </div>
         </div>
+    </main>
 
-    <!-- External JS libraries -->
+   
+    <!-- JS -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/d3.min.js"></script>
-    <!-- Custom JS -->
     <script src="js/main.js"></script>
-
-    </body>
-</html>
-
-
-
-
-
-
-
-
-
+</

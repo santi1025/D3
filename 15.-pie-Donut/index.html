@@ -1,46 +1,97 @@
-<!-- 
-
-    Adapted from Mike Bostock at bl.ocks.org
-    https://bl.ocks.org/mbostock/5682158
-
- -->
-
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
-    <title>Pie and donut charts</title>
+    <meta name="description" content="Pie and Donut Charts with D3.js">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pie and Donut Charts</title>
+
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            background-color: #1f1f1f;
+            color: #f2f2f2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #2d2d2d;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .navbar .container {
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .navbar h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #chart-area {
+            background-color: #292929;
+            padding: 60px 0;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        form {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+        }
+    </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-default">
+
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <h1>Pie & Donut Charts</h1>
+            </div>
+        </nav>
+    </header>
+
+    <main>
         <div class="container">
-           
-        </div>
-    </nav>
-
-    <!-- Bootstrap grid setup -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <form></form>
+            <div class="row">
+                <div class="col-md-4">
+                    <form>
+                        <!-- Formulario para filtros o controles -->
+                    </form>
+                </div>
             </div>
-         </div>
-          <div class="row">
-            <div class="col-md-12">
-                <div id="chart-area"></div>                  
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="chart-area">
+                        <!-- D3.js will render the chart here -->
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
-<!-- External JS libraries -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/d3.min.js"></script>
-<!-- Custom JS -->
-<script src="js/main.js"></script>
+    <footer class="text-center text-muted py-4">
+        <small>&copy; 2025 Pie and Donut Charts Example</small>
+    </footer>
+
+    <!-- External JS libraries -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
+</html>

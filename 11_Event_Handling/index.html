@@ -1,35 +1,76 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
+    <meta name="description" content="Leaf Project - Interactive Data Visualization">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Leaf Project</title>
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Custom styling -->
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            background-color: gray;
+            color: #000000; /* ✅ Letras en gris claro */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #1f1f1f;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .navbar-brand img {
+            max-height: 48px;
+        }
+
+        #chart-area {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        /* Asegura que los ejes y textos de D3 también sean grises */
+        .axis text {
+            fill: #cccccc;
+        }
+
+        .axis path,
+        .axis line {
+            stroke: #cccccc;
+        }
+    </style>
 </head>
 
 <body>
     <nav class="navbar navbar-default">
         <div class="container">
-            <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png"></a>      
+            <a class="navbar-brand" href="#">
+                <img id="logo" src="img/logo.png" alt="Leaf Project Logo">
+            </a>
         </div>
     </nav>
 
-    <!-- Bootstrap grid setup -->
-    <div class="container">
-        <div class="row">
-            <div id="chart-area"></div>  
+    <main>
+        <div class="container">
+            <div class="row">
+                <div id="chart-area">
+                    <!-- D3.js will draw the chart here -->
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
 
-<!-- External JS libraries -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/d3.min.js"></script>
-<!-- Custom JS -->
-<script src="js/main.js"></script>
+    <!-- External JS libraries -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
 
 </body>
 </html>

@@ -34,7 +34,7 @@ d3.json("data/data.json").then(data => {
         .domain([2000, 1400000000])
         .range([25 * Math.PI, 1500 * Math.PI]);
 
-    const colorScale = d3.scaleOrdinal(d3.schemePastel1);
+    const colorScale = d3.scaleOrdinal(d3.schemeSet2);
 
     // ADD AXES
     const xAxis = d3.axisBottom(xScale)
@@ -205,7 +205,7 @@ d3.json("data/data.json").then(data => {
         .style("width", "300px")
         .style("z-index", 10)
         .on("input", function() {
-            // Clear interval if animation is running
+
             if (playPauseButton.text() === "Pause") {
                 clearInterval(intervalId);
                 playPauseButton.text("Play");

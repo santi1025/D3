@@ -12,3 +12,8 @@
 	height: 60px;
 	padding: 5px 0px;
 }
+
+body {
+    background-color: #121212;
+    color: white;
+}
